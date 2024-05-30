@@ -1,0 +1,66 @@
+.StyleCard {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Define a altura da seção como 100% da altura da viewport */
+    padding: 0 20px; /* Adiciona padding nas laterais */
+}
+
+.slider {
+    display: flex;
+    flex-direction: row; /* Organiza os cards em uma linha */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    gap: 20px; /* Adiciona espaçamento entre os cards */
+    max-width: 100%; /* Define a largura máxima dos cards como 100% */
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    padding: 0 20px; /* Adiciona padding nas laterais */
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #fff; /* Define a cor de fundo como branco */
+}
+
+.card .img img {
+    max-width: 100%; /* Define o tamanho máximo da imagem como 100% da largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.card .content {
+    padding: 20px;
+    text-align: left; /* Alinha o conteúdo à esquerda */
+}
+
+.card .btn {
+    text-align: right; /* Alinha o botão à direita */
+}
+
+.card .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000; /* Define a cor do texto como preto */
+}
+
+.card .sub-title {
+    font-size: 18px;
+    color: #666; /* Define a cor do texto como cinza */
+    margin-bottom: 10px;
+}
+
+.card .btn button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card .btn button:hover {
+    background-color: #0056b3;
+}
