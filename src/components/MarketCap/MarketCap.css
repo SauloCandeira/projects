@@ -1,0 +1,28 @@
+/* MarketCap.css */
+
+.market-cap {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.price,
+.variation {
+  font-size: 16px;
+}
+
+.green {
+  color: #00ff00;
+}
+
+.red {
+  color: #ff0000;
+}
