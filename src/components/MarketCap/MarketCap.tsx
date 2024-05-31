@@ -2,24 +2,18 @@ import React from "react";
 import "./MarketCap.css";
 
 export type MarketCapProps = {
-  price: number;
-  dailyVariation: number;
   totalCost: number;
   totalSales: number;
-  costPrice: number;
-  salePrice: number;
+  dailyVariation: number;
 };
 
 const MarketCap: React.FC<MarketCapProps> = ({
-  price,
-  dailyVariation,
   totalCost,
   totalSales,
-  costPrice,
-  salePrice,
+  dailyVariation,
 }) => {
   // Cálculo do lucro
-  const profit = salePrice - costPrice;
+  const profit = totalSales - totalCost;
 
   // Lógica para determinar a cor do texto com base na variação diária
   const textColor = dailyVariation >= 0 ? "green" : "red";
@@ -33,14 +27,14 @@ const MarketCap: React.FC<MarketCapProps> = ({
         <div>
           <strong>Vendas Totais:</strong> ${totalSales}
         </div>
-
-        <strong>Lucro:</strong> ${profit}
+        <div>
+          <strong>Lucro:</strong> ${profit}
+        </div>
         <span className={`variation ${textColor}`}>
           {dailyVariation > 0 ? "+" : ""}
           {dailyVariation}%
         </span>
       </div>
-
     </div>
   );
 };

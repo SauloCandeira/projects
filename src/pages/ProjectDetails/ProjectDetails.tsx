@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Countdown2 from '../../components/Countdown/Countdown2';
 import MarketCap from '../../components/MarketCap/MarketCap';
-import data, { Project } from '../../Seeds/InterfaceProject';
-import './ProjectDetails.css'; // Importe o arquivo CSS para estilização
-
+import { Project, data } from '../../Interfaces/InterfaceProject'; // Importando a interface Project e a variável data
+import './ProjectDetails.css'; // Import the CSS file for styling
 const stages = [
     { id: 1, name: 'Ideia' },
     { id: 2, name: 'Protótipo' },
@@ -13,8 +12,9 @@ const stages = [
 ];
 
 const ProjectDetails: React.FC = () => {
-    const { id } = useParams<{ id: string }>(); // Use o useParams para obter o ID do projeto a partir da URL
-    const project: Project | undefined = data.find(proj => proj.id === parseInt(id)); // Encontre o projeto com base no ID
+    const { id } = useParams<{ id: string }>();
+    const project: Project | undefined = id ? data.find((proj: Project) => proj.id === parseInt(id)) : undefined;
+
 
     if (!project) {
         return <div>Projeto não encontrado</div>;
@@ -28,7 +28,7 @@ const ProjectDetails: React.FC = () => {
         const calculateStageCompletion = () => {
             const completionArray: number[] = [];
             stages.forEach((stage, index) => {
-                const filteredTasks = project.tasks.filter(task => task.id_stage === index + 1);
+                const filteredTasks = project.tasks.filter((task) => task.id_stage === stage.id);
                 const totalProgress = filteredTasks.reduce((acc, task) => acc + task.progress, 0);
                 const stageProgress = filteredTasks.length > 0 ? Math.round(totalProgress / filteredTasks.length) : 0;
                 completionArray.push(stageProgress);
@@ -58,8 +58,8 @@ const ProjectDetails: React.FC = () => {
             <img src={project.image} alt={project.title} className="project-image" />
             <div className="project-info">
                 <p>{project.subtitle}</p>
-                <Countdown2 data={project.date} title={project.title} />
-                <MarketCap price={project.salePrice} dailyVariation={project.dailyVariation} />
+                <Countdown2 data={new Date(project.date)} title={project.title} />
+                <MarketCap totalCost={project.budget.totalCost} totalSales={project.salePrice} dailyVariation={project.dailyVariation} />
                 <progress value={project.progress} max="100" className="project-progress"></progress>
                 <span className="progress-percentage">{project.progress}%</span>
                 <h2>Estágio do Projeto: {project.stage.name}</h2>
@@ -91,7 +91,7 @@ const ProjectDetails: React.FC = () => {
                     </thead>
                     <tbody>
                         {project.tasks
-                            .filter(task => task.id_stage === currentStageIndex + 1) // Filtra as tarefas pelo estágio selecionado
+                            .filter((task) => task.id_stage === stages[currentStageIndex].id) // Filtra as tarefas pelo estágio selecionado
                             .map((task, index) => (
                                 <tr key={index}>
                                     <td>{task.name}</td>

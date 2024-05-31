@@ -45,7 +45,7 @@ interface Status {
     status_ref: 'Não iniciado' | 'Pausado' | 'Em andamento' | 'Atrasado' | 'Completo'; // Referência do status.
 }
 
-interface Project {
+export interface Project {
     id: number;
     title: string;
     subtitle: string;
@@ -79,7 +79,7 @@ function calculateTotalProgress(tasks: Task[]): number {
     return totalProgress / tasks.length;
 }
 
-const data: Project[] = [
+export const data: Project[] = [
     {
         id: 1,
         title: "Orange - HyperVolt",
@@ -115,6 +115,3 @@ const data: Project[] = [
         marketCap: 50000
     }
 ];
-
-export type { Project };
-export { data };

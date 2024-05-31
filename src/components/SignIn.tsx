@@ -23,7 +23,7 @@ export default function SignIn() {
                     </button>
                     <h1>{localStorage.getItem("name")}</h1>
                     <h1>{localStorage.getItem("email")}</h1>
-                    <img src={localStorage.getItem("profilePic")} />
+                    <img src={localStorage.getItem("profilePic") || undefined} />
                 </div>
             </div>
             

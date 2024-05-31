@@ -1,12 +1,15 @@
 {
-  "name": "counter-app",
+  "name": "projects",
+  "homepage": "https://saulocandeira.github.io/projects",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "firebase": "^9.16.0",
@@ -21,6 +24,7 @@
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
+    "gh-pages": "^5.0.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3",
