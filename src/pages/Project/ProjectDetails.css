@@ -156,3 +156,23 @@ button:hover {
 .report-button:hover {
   background-color: #0056b3;
 }
+
+.timeline-stage.selected .timeline-circle {
+  background-color: green; /* Altere a cor para verde quando estiver selecionado */
+}
+
+.timeline-stage .task-percentage {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.blocked-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  border-radius: 50%;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Countdown2 from '../../components/Countdown/Countdown2';
 import MarketCap from '../../components/MarketCap/MarketCap';
@@ -21,6 +21,23 @@ const ProjectDetails: React.FC = () => {
     }
 
     const [selectedStage, setSelectedStage] = useState<string | null>(project.stage.stage_ref); // Estágio selecionado na timeline
+    const [stageCompletion, setStageCompletion] = useState<number[]>([]); // Porcentagem de conclusão de cada estágio
+
+    useEffect(() => {
+        // Calcula a porcentagem de conclusão de cada estágio
+        const calculateStageCompletion = () => {
+            const completionArray: number[] = [];
+            stages.forEach((stage, index) => {
+                const filteredTasks = project.tasks.filter(task => task.id_stage === index + 1);
+                const totalProgress = filteredTasks.reduce((acc, task) => acc + task.progress, 0);
+                const stageProgress = filteredTasks.length > 0 ? Math.round(totalProgress / filteredTasks.length) : 0;
+                completionArray.push(stageProgress);
+            });
+            setStageCompletion(completionArray);
+        };
+
+        calculateStageCompletion();
+    }, [project.tasks]);
 
     const handleStageClick = (stage: string, stageId: number) => {
         setSelectedStage(stage);
@@ -34,9 +51,6 @@ const ProjectDetails: React.FC = () => {
         console.log(`Gerando relatório: ${reportType}`);
         alert(`Gerando relatório: ${reportType}`);
     };
-
-    // Filtrar as tarefas do projeto com base no estágio selecionado
-    const filteredTasks = project.tasks.filter(task => task.id_stage === currentStageIndex + 1);
 
     return (
         <div className="project-details">
@@ -62,6 +76,8 @@ const ProjectDetails: React.FC = () => {
                                 } ${stage.name === selectedStage ? 'active' : ''}`}
                             ></div>
                             <span className="timeline-label">{stage.name}</span>
+                            {/* Exibe a porcentagem de conclusão de cada estágio */}
+                            <span className="task-percentage">{stageCompletion[index]}% concluído</span>
                         </div>
                     ))}
                 </div>
@@ -74,15 +90,17 @@ const ProjectDetails: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredTasks.map((task, index) => (
-                            <tr key={index}>
-                                <td>{task.name}</td>
-                                <td>
-                                    <progress value={task.progress} max="100"></progress>
-                                    <span className="task-progress-percentage">{task.progress}%</span>
-                                </td>
-                            </tr>
-                        ))}
+                        {project.tasks
+                            .filter(task => task.id_stage === currentStageIndex + 1) // Filtra as tarefas pelo estágio selecionado
+                            .map((task, index) => (
+                                <tr key={index}>
+                                    <td>{task.name}</td>
+                                    <td>
+                                        <progress value={task.progress} max="100"></progress>
+                                        <span className="task-progress-percentage">{task.progress}%</span>
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
                 <div className="buttons-container">
