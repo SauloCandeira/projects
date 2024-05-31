@@ -1,14 +1,16 @@
+/* Countdown2.css */
+
 .countdown-card {
   background-color: black;
   color: white;
-  padding: 20px;
+  padding: 5px; /* Reduzindo o padding para compactar mais o conteúdo */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .countdown-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 10px; /* Reduzindo ainda mais o tamanho do título */
+  margin-bottom: 3px; /* Reduzindo a margem inferior do título */
 }
 
 .timer-wrapper {
@@ -18,25 +20,26 @@
 
 .timer-inner {
   display: flex;
+  justify-content: center; /* Alinhando os elementos na horizontal */
 }
 
 .timer-segment {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px;
+  margin: 0 1px; /* Reduzindo a margem entre os segmentos */
 }
 
 .time {
-  font-size: 32px;
+  font-size: 10px; /* Reduzindo mais o tamanho dos caracteres */
 }
 
 .label {
-  font-size: 14px;
+  font-size: 5px; /* Reduzindo ainda mais o tamanho do texto de rótulo */
   text-transform: uppercase;
 }
 
 .divider {
-  font-size: 24px;
-  margin: 0 5px;
+  font-size: 7px; /* Reduzindo mais o tamanho do divisor */
+  margin: 0 1px; /* Reduzindo ainda mais a margem do divisor */
 }

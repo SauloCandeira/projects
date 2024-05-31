@@ -1,28 +1,46 @@
-import React, { useEffect, useState } from "react";
-import "./MarketCap.css"; // Importe seu arquivo de estilo CSS aqui
+import React from "react";
+import "./MarketCap.css";
 
 export type MarketCapProps = {
   price: number;
   dailyVariation: number;
+  totalCost: number;
+  totalSales: number;
+  costPrice: number;
+  salePrice: number;
 };
 
-const MarketCap: React.FC<MarketCapProps> = ({ price, dailyVariation }) => {
+const MarketCap: React.FC<MarketCapProps> = ({
+  price,
+  dailyVariation,
+  totalCost,
+  totalSales,
+  costPrice,
+  salePrice,
+}) => {
+  // Cálculo do lucro
+  const profit = salePrice - costPrice;
+
   // Lógica para determinar a cor do texto com base na variação diária
   const textColor = dailyVariation >= 0 ? "green" : "red";
 
   return (
     <div className="market-cap">
-      <div>
-        <span className="label">Preço:</span>
-        <span className="price">{price}</span>
-      </div>
-      <div>
-        <span className="label">Variação Diária:</span>
+      <div className="budget-container">
+        <div>
+          <strong>Custo Total:</strong> ${totalCost}
+        </div>
+        <div>
+          <strong>Vendas Totais:</strong> ${totalSales}
+        </div>
+
+        <strong>Lucro:</strong> ${profit}
         <span className={`variation ${textColor}`}>
           {dailyVariation > 0 ? "+" : ""}
           {dailyVariation}%
         </span>
       </div>
+
     </div>
   );
 };

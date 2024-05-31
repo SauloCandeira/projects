@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Countdown2.css"; // Importe seu arquivo de estilo CSS
 
 export type CountdownProps = {
@@ -42,22 +42,22 @@ const Countdown2: React.FC<CountdownProps> = ({ data, title }) => {
       <div className="timer-wrapper">
         <div className="timer-inner">
           <div className="timer-segment">
-            <span className="time">{days}</span>
+            <span className="time">{days < 10 ? `0${days}` : days}</span>
             <span className="label">Days</span>
           </div>
           <span className="divider">:</span>
           <div className="timer-segment">
-            <span className="time">{hours}</span>
+            <span className="time">{hours < 10 ? `0${hours}` : hours}</span>
             <span className="label">Hours</span>
           </div>
           <span className="divider">:</span>
           <div className="timer-segment">
-            <span className="time">{minutes}</span>
+            <span className="time">{minutes < 10 ? `0${minutes}` : minutes}</span>
             <span className="label">Minutes</span>
           </div>
           <span className="divider">:</span>
           <div className="timer-segment">
-            <span className="time">{seconds}</span>
+            <span className="time">{seconds < 10 ? `0${seconds}` : seconds}</span>
             <span className="label">Seconds</span>
           </div>
         </div>

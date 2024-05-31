@@ -6,7 +6,7 @@ import Modal from "../../components/Modal/Modal";
 import Countdown2 from "../../components/Countdown/Countdown2";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import MarketCap from "../../components/MarketCap/MarketCap";
-import data from '../../Seeds/data';
+import data from '../../Seeds/InterfaceProject';
 import "./Projects.css";
 import alvaImage from '../../assets/images/alva.png';
 

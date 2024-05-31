@@ -1,66 +1,131 @@
+/* Projects.css */
+
 .StyleCard {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Define a altura da seção como 100% da altura da viewport */
-    padding: 0 20px; /* Adiciona padding nas laterais */
-}
-
-.slider {
-    display: flex;
-    flex-direction: row; /* Organiza os cards em uma linha */
-    justify-content: center; /* Centraliza os cards horizontalmente */
-    gap: 20px; /* Adiciona espaçamento entre os cards */
-    max-width: 100%; /* Define a largura máxima dos cards como 100% */
-    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
-    padding: 0 20px; /* Adiciona padding nas laterais */
-}
-
-.card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    background-color: #fff; /* Define a cor de fundo como branco */
-}
-
-.card .img img {
-    max-width: 100%; /* Define o tamanho máximo da imagem como 100% da largura do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-}
-
-.card .content {
     padding: 20px;
-    text-align: left; /* Alinha o conteúdo à esquerda */
-}
-
-.card .btn {
-    text-align: right; /* Alinha o botão à direita */
-}
-
-.card .title {
-    font-size: 24px;
+  }
+  
+  .slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    width: 350px; /* Aumentando a largura do card */
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #000; /* Define a cor do texto como preto */
-}
-
-.card .sub-title {
-    font-size: 18px;
-    color: #666; /* Define a cor do texto como cinza */
-    margin-bottom: 10px;
-}
-
-.card .btn button {
-    padding: 10px 20px;
-    background-color: #007bff;
+  }
+  
+  .sub-title {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  .progress-container {
+    margin-bottom: 15px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .progress-container progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #333;
+  }
+  
+  #progress-percentage {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .budget-container {
+    margin-bottom: 15px;
+  }
+  
+  .budget-container div {
+    margin-bottom: 5px;
+  }
+  
+  .btn {
+    text-align: center;
+  }
+  
+  .btn button {
+    background-color: #007BFF;
     color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.card .btn button:hover {
+    transition: background-color 0.3s;
+  }
+  
+  .btn button:hover {
     background-color: #0056b3;
-}
+  }
+  
+  /* Ajustes para o countdown */
+  .countdown-card {
+    font-size: 14px;
+  }
+  
+  .timer-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timer-inner {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timer-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1px;
+  }
+  
+  .time {
+    font-size: 12px; /* Diminuindo o tamanho dos caracteres do countdown */
+  }
+  
+  .label {
+    font-size: 10px; /* Diminuindo o tamanho do texto do countdown */
+    text-transform: uppercase;
+  }
+  
+  .divider {
+    font-size: 12px; /* Diminuindo o tamanho do divisor do countdown */
+    margin: 0 1px;
+  }
+  
